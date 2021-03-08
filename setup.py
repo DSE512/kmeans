@@ -14,7 +14,7 @@ requirements = ['cython']
 
 extensions = [
     Extension(
-        name='kmeans._cluster_centers',
+        name='kmeans._cluster_means',
         sources=['kmeans/_cluster_means.pyx']
     )
 ]
@@ -39,14 +39,14 @@ setup(
     long_description=readme,
     include_package_data=True,
     keywords='kmeans',
-    name='kmeans',
-    packages=find_packages(include=['kmeans', 'kmeans.*']),
+    name='cluster',
+    packages=find_packages(include=['cluster', 'cluster.*']),
     include_dirs = [np.get_include()],
     ext_modules=cythonize(extensions),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/yngtodd/kmeans',
+    url='https://github.com/DSE512/kmeans',
     version='0.1.0',
     zip_safe=False,
 )

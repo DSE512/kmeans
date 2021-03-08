@@ -2,6 +2,7 @@ import numpy as np
 
 from collections import deque
 from scipy.spatial.distance import cdist
+from cluster._cluster_means import update_cluster_means
 
 
 def euclidean_distance(x1, x2):
@@ -56,12 +57,12 @@ def _kmeans(data, centroids, threshold=1e-5):
         code, min_dist = vector_quantize(data, centroids)
         prev_dists.append(min_dist.mean(axis=-1))
 
-        codebook, has_members = cluster._cluster_means.update_cluster_means(
-            data, obs_code, centroids.shape[0]
+        codebook, has_members = update_cluster_means(
+            data, code, centroids.shape[0]
         )
 
-        codebook = code_book[has_members]
+        codebook = codebook[has_members]
         diff = prev_dists[0] - prev_dists[1]
 
-        return codebook, prev_avg_dists[1]
+        return codebook, prev_dists[1]
 

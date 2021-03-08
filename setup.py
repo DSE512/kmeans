@@ -14,8 +14,8 @@ requirements = ['cython']
 
 extensions = [
     Extension(
-        name='kmeans._cluster_means',
-        sources=['kmeans/_cluster_means.pyx']
+        name='cluster._cluster_means',
+        sources=['cluster/_cluster_means.pyx']
     )
 ]
 
